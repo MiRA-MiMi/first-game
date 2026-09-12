@@ -1,0 +1,111 @@
+[gd_scene load_steps=25 format=3 uid="uid://c306tsyqd5ems"]
+
+[ext_resource type="Script" uid="uid://bp5ewe87iahjk" path="res://scripts/principal.gd" id="1_1k33c"]
+[ext_resource type="PackedScene" uid="uid://b5pbspwp3f6sl" path="res://scenes/game.tscn" id="2_j5742"]
+[ext_resource type="PackedScene" uid="uid://dqcjgit6pgw0q" path="res://scenes/game2.tscn" id="3_jccv5"]
+[ext_resource type="PackedScene" uid="uid://chelrw4v27mx5" path="res://scenes/escena_final.tscn" id="4_0pxoi"]
+[ext_resource type="PackedScene" uid="uid://cy42o0snnbgq0" path="res://scenes/game3.tscn" id="4_1xbp8"]
+[ext_resource type="Script" uid="uid://ohyw0doxlv8x" path="res://scenes/contenedor_monedas.gd" id="5_0at3r"]
+[ext_resource type="PackedScene" uid="uid://d1t0gt3rwdodf" path="res://scenes/contador_monedas.tscn" id="5_0pxoi"]
+[ext_resource type="PackedScene" uid="uid://dx0jwbsnihvqe" path="res://scenes/controlador_partida.tscn" id="5_ckosc"]
+[ext_resource type="PackedScene" uid="uid://fpmbquel8ght" path="res://scenes/contador_muertes.tscn" id="5_jccv5"]
+[ext_resource type="PackedScene" uid="uid://c6r8lu4l7a3gv" path="res://scenes/contador_monedas_totales.tscn" id="7_l2a8t"]
+[ext_resource type="AudioStream" uid="uid://bfdvf7b50vq6p" path="res://assets/music/カゲロウデイズ ( 8 bit ver. ).mp3" id="10_xyofb"]
+[ext_resource type="Script" uid="uid://be24etkvj5kmf" path="res://scenes/gramola.gd" id="11_cf5mm"]
+[ext_resource type="Theme" uid="uid://dclpb6p76r266" path="res://Themes/boton_menu_principal.tres" id="11_v2y4t"]
+[ext_resource type="Script" uid="uid://bb7rx1x7b4ktp" path="res://scenes/volver_menu.gd" id="12_srya7"]
+[ext_resource type="AudioStream" uid="uid://bv3cpwki2c81i" path="res://assets/music/[#8bit] I'm the Rain - inabakumori [#Chiptune RemixCover #inabakumori].mp3" id="12_x2ui6"]
+[ext_resource type="Script" uid="uid://ce77klqi7hrwn" path="res://scenes/salirDeLaPartida.gd" id="13_aojn8"]
+[ext_resource type="Script" uid="uid://n1hbje1psvjc" path="res://scenes/quitar_pausa.gd" id="13_dynj2"]
+[ext_resource type="AudioStream" uid="uid://ciy82dwetnqug" path="res://assets/music/8 but - kagepro.mp3" id="13_v2y4t"]
+[ext_resource type="AudioStream" uid="uid://lilrw3eam6uq" path="res://assets/music/8 bit kagepro.mp3" id="14_aojn8"]
+[ext_resource type="AudioStream" uid="uid://ccqburs3jsgk3" path="res://assets/music/8-bit venom flower.mp3" id="15_srya7"]
+[ext_resource type="AudioStream" uid="uid://dsfwivwvgkqqw" path="res://assets/music/8 bit -Teto.mp3" id="16_dynj2"]
+[ext_resource type="AudioStream" uid="uid://dxhd2oo6h7wk" path="res://assets/music/[8-BIT COVER] syudou - cute girlfriend.mp3" id="17_1xbp8"]
+[ext_resource type="Script" uid="uid://bbrjxa42avkb" path="res://scenes/controlador_pausa.gd" id="18_cf5mm"]
+[ext_resource type="PackedScene" uid="uid://kqet36xufpuh" path="res://scenes/controles_mobiles.tscn" id="22_srya7"]
+
+[node name="principal" type="Node2D" node_paths=PackedStringArray("controlador_partida", "audioPlayer")]
+script = ExtResource("1_1k33c")
+niveles = Array[PackedScene]([ExtResource("2_j5742"), ExtResource("3_jccv5"), ExtResource("4_1xbp8"), ExtResource("4_0pxoi")])
+controlador_partida = NodePath("ControladorPartida")
+audioPlayer = NodePath("AudioStreamPlayer")
+
+[node name="ControladorPartida" parent="." instance=ExtResource("5_ckosc")]
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="ControlesMobiles" parent="CanvasLayer" instance=ExtResource("22_srya7")]
+
+[node name="HBoxContainer" type="HBoxContainer" parent="CanvasLayer"]
+offset_right = 464.0
+offset_bottom = 40.0
+theme_override_constants/separation = 0
+script = ExtResource("5_0at3r")
+
+[node name="ContadorMuertes" parent="CanvasLayer/HBoxContainer" instance=ExtResource("5_jccv5")]
+layout_mode = 2
+
+[node name="ContadorMonedas" parent="CanvasLayer/HBoxContainer" instance=ExtResource("5_0pxoi")]
+layout_mode = 2
+
+[node name="ContadorMonedasTotales" parent="CanvasLayer/HBoxContainer" instance=ExtResource("7_l2a8t")]
+layout_mode = 2
+
+[node name="ControladorPausa" type="Node" parent="CanvasLayer" node_paths=PackedStringArray("fondo")]
+process_mode = 3
+script = ExtResource("18_cf5mm")
+fondo = NodePath("ColorRect")
+
+[node name="ColorRect" type="ColorRect" parent="CanvasLayer/ControladorPausa"]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(5.4147094e-08, 0.15775585, 0.16041449, 0.47058824)
+
+[node name="VBoxContainer" type="VBoxContainer" parent="CanvasLayer/ControladorPausa/ColorRect"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -20.0
+offset_top = -20.0
+offset_right = 20.0
+offset_bottom = 20.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/separation = 20
+
+[node name="Quitar Pausa" type="Button" parent="CanvasLayer/ControladorPausa/ColorRect/VBoxContainer"]
+layout_mode = 2
+theme = ExtResource("11_v2y4t")
+theme_override_font_sizes/font_size = 50
+text = "Quitar Pausa"
+script = ExtResource("13_dynj2")
+
+[node name="VolverMenu" type="Button" parent="CanvasLayer/ControladorPausa/ColorRect/VBoxContainer" node_paths=PackedStringArray("controladorPartida")]
+layout_mode = 2
+theme = ExtResource("11_v2y4t")
+theme_override_font_sizes/font_size = 50
+text = " Volver al menu "
+script = ExtResource("12_srya7")
+controladorPartida = NodePath("../../../../../ControladorPartida")
+
+[node name="Salir" type="Button" parent="CanvasLayer/ControladorPausa/ColorRect/VBoxContainer" node_paths=PackedStringArray("controladorPartida")]
+layout_mode = 2
+theme = ExtResource("11_v2y4t")
+theme_override_font_sizes/font_size = 50
+text = "Salir"
+script = ExtResource("13_aojn8")
+controladorPartida = NodePath("../../../../../ControladorPartida")
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("10_xyofb")
+bus = &"Musica"
+parameters/looping = true
+script = ExtResource("11_cf5mm")
+songs = Array[AudioStream]([ExtResource("12_x2ui6"), ExtResource("13_v2y4t"), ExtResource("14_aojn8"), ExtResource("15_srya7"), ExtResource("16_dynj2"), ExtResource("17_1xbp8")])

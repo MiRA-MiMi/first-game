@@ -1,0 +1,12 @@
+extends Node
+
+@export var fondo : ColorRect
+
+func _ready() -> void:
+	fondo.visible = false
+
+func _input(event: InputEvent) -> void:
+	
+	if event.is_action_pressed("Pausa"):
+		get_tree().paused = !get_tree().paused
+		fondo.visible = !fondo.visible

@@ -1,0 +1,19 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+uid="uid://bfdvf7b50vq6p"
+path="res://.godot/imported/カゲロウデイズ ( 8 bit ver. ).mp3-026b018156e651cc9be2344d84caf8eb.mp3str"
+
+[deps]
+
+source_file="res://assets/music/カゲロウデイズ ( 8 bit ver. ).mp3"
+dest_files=["res://.godot/imported/カゲロウデイズ ( 8 bit ver. ).mp3-026b018156e651cc9be2344d84caf8eb.mp3str"]
+
+[params]
+
+loop=false
+loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4

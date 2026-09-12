@@ -1,0 +1,159 @@
+[gd_scene load_steps=21 format=3 uid="uid://dk5q8y6xyy08"]
+
+[ext_resource type="PackedScene" uid="uid://dx0jwbsnihvqe" path="res://scenes/controlador_partida.tscn" id="1_wjn2m"]
+[ext_resource type="Texture2D" uid="uid://cx5ll6bb46nqi" path="res://assets/sprites/Nepfi animated/Layer 1_sprite_06.png" id="2_nh47q"]
+[ext_resource type="Texture2D" uid="uid://daeob14vqsr6m" path="res://assets/sprites/Nepfi animated/Layer 1_sprite_07.png" id="3_tegsa"]
+[ext_resource type="Texture2D" uid="uid://cjkw84d33e6dl" path="res://assets/sprites/Nepfi animated/Layer 1_sprite_08.png" id="4_vhsr0"]
+[ext_resource type="Texture2D" uid="uid://bija48efffl5r" path="res://assets/sprites/Nepfi animated/Layer 1_sprite_09.png" id="5_bb5mh"]
+[ext_resource type="Theme" uid="uid://dclpb6p76r266" path="res://Themes/boton_menu_principal.tres" id="6_s55gq"]
+[ext_resource type="Script" uid="uid://bb7rx1x7b4ktp" path="res://scenes/volver_menu.gd" id="7_d5qrp"]
+[ext_resource type="PackedScene" uid="uid://c6r8lu4l7a3gv" path="res://scenes/contador_monedas_totales.tscn" id="8_lc8dd"]
+[ext_resource type="Script" uid="uid://b0s0hyy5wxnev" path="res://scenes/nivel_1.gd" id="9_7ipvb"]
+[ext_resource type="StyleBox" uid="uid://dwfpgua5qhs3c" path="res://ButtonStyles/botonNormal.tres" id="9_ed4hr"]
+[ext_resource type="StyleBox" uid="uid://cyrmja0eaxyqe" path="res://ButtonStyles/botonPress.tres" id="10_ovbga"]
+[ext_resource type="StyleBox" uid="uid://b15cxl6oa7yh3" path="res://ButtonStyles/botonHover.tres" id="11_762jb"]
+[ext_resource type="StyleBox" uid="uid://dwxeyp3gpd41c" path="res://ButtonStyles/botonFocus.tres" id="12_wsddo"]
+[ext_resource type="PackedScene" uid="uid://c306tsyqd5ems" path="res://scenes/principal.tscn" id="14_kbe21"]
+[ext_resource type="Script" uid="uid://det3fmda5ai4a" path="res://scenes/nivel_3.gd" id="15_nh47q"]
+[ext_resource type="Script" uid="uid://bgowb68mk030q" path="res://scenes/nivel_2.gd" id="15_wjn2m"]
+[ext_resource type="Script" uid="uid://dx0k1x7fkfbxf" path="res://scenes/nivel_5.gd" id="16_tegsa"]
+[ext_resource type="Script" uid="uid://b8me3pa0vr76y" path="res://scenes/nivel_4.gd" id="18_vhsr0"]
+
+[sub_resource type="AnimatedTexture" id="AnimatedTexture_dq4yk"]
+frames = 4
+speed_scale = 9.0
+frame_0/texture = ExtResource("2_nh47q")
+frame_1/texture = ExtResource("3_tegsa")
+frame_1/duration = 1.0
+frame_2/texture = ExtResource("4_vhsr0")
+frame_2/duration = 1.0
+frame_3/texture = ExtResource("5_bb5mh")
+frame_3/duration = 1.0
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_52l0c"]
+particle_flag_disable_z = true
+emission_shape = 3
+emission_box_extents = Vector3(1, 500, 1)
+angle_min = -403.9
+angle_max = 158.00002
+spread = 0.0
+initial_velocity_min = 50.0
+initial_velocity_max = 100.0
+gravity = Vector3(0, 0, 0)
+
+[node name="CargarNivel" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="ControladorPartida" parent="." instance=ExtResource("1_wjn2m")]
+
+[node name="ColorRect" type="ColorRect" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_bottom = 24.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.30980393, 1, 1, 0.6509804)
+
+[node name="Control" type="Control" parent="."]
+layout_mode = 1
+anchors_preset = 4
+anchor_top = 0.5
+anchor_bottom = 0.5
+offset_left = -376.0
+offset_top = -28.0
+offset_right = -336.0
+offset_bottom = 12.0
+grow_vertical = 2
+
+[node name="GPUParticles2D" type="GPUParticles2D" parent="Control"]
+position = Vector2(0, 103)
+amount = 45
+texture = SubResource("AnimatedTexture_dq4yk")
+lifetime = 35.0
+preprocess = 30.0
+visibility_rect = Rect2(-1000, -1000, 2000, 2000)
+process_material = SubResource("ParticleProcessMaterial_52l0c")
+
+[node name="Volver al menu" type="Button" parent="." node_paths=PackedStringArray("controladorPartida")]
+layout_mode = 0
+offset_left = 176.0
+offset_top = 744.0
+offset_right = 1424.0
+offset_bottom = 854.0
+theme = ExtResource("6_s55gq")
+text = "Volver al menu"
+script = ExtResource("7_d5qrp")
+controladorPartida = NodePath("../ControladorPartida")
+
+[node name="ContadorMonedasTotales" parent="." instance=ExtResource("8_lc8dd")]
+layout_mode = 0
+offset_right = 240.0
+offset_bottom = 56.0
+
+[node name="BoxContainer2" type="BoxContainer" parent="."]
+layout_mode = 0
+offset_left = 104.0
+offset_top = 24.0
+offset_right = 744.0
+offset_bottom = 816.0
+theme_override_constants/separation = 50
+alignment = 1
+vertical = true
+
+[node name="Nivel1" type="Button" parent="BoxContainer2"]
+layout_mode = 2
+theme = ExtResource("6_s55gq")
+text = "Nivel 1"
+script = ExtResource("9_7ipvb")
+nivel = ExtResource("14_kbe21")
+
+[node name="Nivel3" type="Button" parent="BoxContainer2"]
+layout_mode = 2
+theme = ExtResource("6_s55gq")
+theme_override_styles/normal = ExtResource("9_ed4hr")
+theme_override_styles/pressed = ExtResource("10_ovbga")
+theme_override_styles/hover = ExtResource("11_762jb")
+theme_override_styles/focus = ExtResource("12_wsddo")
+text = "Nivel 3"
+script = ExtResource("15_nh47q")
+nivel = ExtResource("14_kbe21")
+
+[node name="Nivel5" type="Button" parent="BoxContainer2"]
+layout_mode = 2
+theme = ExtResource("6_s55gq")
+text = "Nivel 5"
+script = ExtResource("16_tegsa")
+
+[node name="BoxContainer" type="BoxContainer" parent="."]
+layout_mode = 0
+offset_left = 856.0
+offset_top = 40.0
+offset_right = 1496.0
+offset_bottom = 808.0
+theme_override_constants/separation = 50
+alignment = 1
+vertical = true
+
+[node name="Nivel2" type="Button" parent="BoxContainer"]
+layout_mode = 2
+theme = ExtResource("6_s55gq")
+text = "Nivel 2"
+script = ExtResource("15_wjn2m")
+nivel = ExtResource("14_kbe21")
+
+[node name="Nivel4" type="Button" parent="BoxContainer"]
+layout_mode = 2
+theme = ExtResource("6_s55gq")
+theme_override_styles/normal = ExtResource("9_ed4hr")
+theme_override_styles/pressed = ExtResource("10_ovbga")
+theme_override_styles/hover = ExtResource("11_762jb")
+theme_override_styles/focus = ExtResource("12_wsddo")
+text = "Nivel 4"
+script = ExtResource("18_vhsr0")

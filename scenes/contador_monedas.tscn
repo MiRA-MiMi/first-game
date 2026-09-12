@@ -1,0 +1,76 @@
+[gd_scene load_steps=4 format=3 uid="uid://d1t0gt3rwdodf"]
+
+[ext_resource type="Script" uid="uid://cbxjw6gq4dahh" path="res://scenes/contador_monedas.gd" id="1_b6tw7"]
+[ext_resource type="Theme" uid="uid://bi3lfcp4ssipt" path="res://Themes/interfazInGame.tres" id="2_ooyuq"]
+
+[sub_resource type="Theme" id="Theme_k6t2k"]
+
+[node name="ContadorMonedas" type="Control" node_paths=PackedStringArray("numMonedas", "numTotal")]
+custom_minimum_size = Vector2(200, 56)
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_right = -1152.0
+offset_bottom = -648.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_b6tw7")
+numMonedas = NodePath("ColorRect/HBoxContainer/Numero")
+numTotal = NodePath("ColorRect/HBoxContainer/Total")
+
+[node name="ColorRect" type="ColorRect" parent="."]
+layout_mode = 1
+offset_right = 200.0
+offset_bottom = 56.0
+color = Color(0.60784316, 1, 1, 0.61960787)
+
+[node name="HBoxContainer" type="HBoxContainer" parent="ColorRect"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -41.5
+offset_top = -20.0
+offset_right = 41.5
+offset_bottom = 20.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Titulo" type="Label" parent="ColorRect/HBoxContainer"]
+layout_mode = 2
+theme = ExtResource("2_ooyuq")
+theme_override_colors/font_shadow_color = Color(0, 0, 0.90588236, 0.79607844)
+theme_override_constants/shadow_offset_x = 1
+theme_override_constants/shadow_offset_y = 1
+theme_override_font_sizes/font_size = 26
+text = "Monedas:"
+
+[node name="Numero" type="Label" parent="ColorRect/HBoxContainer"]
+layout_mode = 2
+theme = SubResource("Theme_k6t2k")
+theme_override_colors/font_shadow_color = Color(0, 0, 0.90588236, 0.79607844)
+theme_override_constants/shadow_offset_x = 1
+theme_override_constants/shadow_offset_y = 1
+theme_override_font_sizes/font_size = 26
+text = "0"
+
+[node name="barra" type="Label" parent="ColorRect/HBoxContainer"]
+layout_mode = 2
+theme = SubResource("Theme_k6t2k")
+theme_override_colors/font_shadow_color = Color(0, 0, 0.90588236, 0.79607844)
+theme_override_constants/shadow_offset_x = 1
+theme_override_constants/shadow_offset_y = 1
+theme_override_font_sizes/font_size = 26
+text = "/"
+
+[node name="Total" type="Label" parent="ColorRect/HBoxContainer"]
+layout_mode = 2
+theme = SubResource("Theme_k6t2k")
+theme_override_colors/font_shadow_color = Color(0, 0, 0.90588236, 0.79607844)
+theme_override_constants/shadow_offset_x = 1
+theme_override_constants/shadow_offset_y = 1
+theme_override_font_sizes/font_size = 26
+text = "0"

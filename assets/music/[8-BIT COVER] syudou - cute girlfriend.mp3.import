@@ -1,0 +1,19 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+uid="uid://dxhd2oo6h7wk"
+path="res://.godot/imported/[8-BIT COVER] syudou - cute girlfriend.mp3-00d5301fd29445de25a10f142cf36f55.mp3str"
+
+[deps]
+
+source_file="res://assets/music/[8-BIT COVER] syudou - cute girlfriend.mp3"
+dest_files=["res://.godot/imported/[8-BIT COVER] syudou - cute girlfriend.mp3-00d5301fd29445de25a10f142cf36f55.mp3str"]
+
+[params]
+
+loop=false
+loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4

@@ -1,0 +1,11 @@
+[gd_scene load_steps=3 format=3 uid="uid://bwnd4d4hlfgd1"]
+
+[ext_resource type="Script" uid="uid://ohyw0doxlv8x" path="res://scenes/contenedor_monedas.gd" id="1_k4ksl"]
+[ext_resource type="PackedScene" uid="uid://fpmbquel8ght" path="res://scenes/contador_muertes.tscn" id="2_fkvku"]
+
+[node name="escenaprincipal" type="Node2D"]
+script = ExtResource("1_k4ksl")
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="ContadorMuertes" parent="CanvasLayer" instance=ExtResource("2_fkvku")]

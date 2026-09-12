@@ -1,0 +1,92 @@
+[gd_scene load_steps=20 format=3 uid="uid://kqet36xufpuh"]
+
+[ext_resource type="Script" uid="uid://bpg8vepq2lgw4" path="res://scenes/controles_mobiles.gd" id="1_4od5p"]
+[ext_resource type="Texture2D" uid="uid://co7mt0ukq8wli" path="res://assets/sprites/Nepfi animated/Layer 1_sprite_15.png" id="1_m3af0"]
+[ext_resource type="Texture2D" uid="uid://cvljfsgbunkrf" path="res://assets/sprites/Nepfi animated/Layer 1_sprite_16.png" id="2_7iccm"]
+[ext_resource type="Texture2D" uid="uid://c2msyvjivw612" path="res://assets/sprites/Nepfi animated/Layer 1_sprite_15.2.png" id="3_w0g76"]
+[ext_resource type="Texture2D" uid="uid://duedqt84ircyn" path="res://assets/sprites/convinigirl/convinigirl-15.png.png" id="4_uhpcg"]
+[ext_resource type="Texture2D" uid="uid://chaussj45c1cr" path="res://assets/sprites/Nepfi animated/Layer 1_sprite_17.png" id="4_y7ah1"]
+[ext_resource type="Texture2D" uid="uid://kqlb1gop1ss4" path="res://assets/sprites/convinigirl/convinigirl-16.png.png" id="5_gqiiq"]
+[ext_resource type="Texture2D" uid="uid://c3jqqcmegbmsf" path="res://assets/sprites/nursegirl/nursegirl-15.png.png" id="5_qi856"]
+[ext_resource type="Texture2D" uid="uid://cnewkpv8o4p77" path="res://assets/sprites/nursegirl/nursegirl-16.png.png" id="6_8snp7"]
+[ext_resource type="Script" uid="uid://cpdjnjmgl64h3" path="res://scripts/touch_screen_button.gd" id="6_464e3"]
+[ext_resource type="Texture2D" uid="uid://bcakd7eyg8ltc" path="res://assets/sprites/bardmaid/bardmaid-15.png.png" id="6_lp0jh"]
+[ext_resource type="Texture2D" uid="uid://cqfnmt0eapk2x" path="res://assets/sprites/bardmaid/bardmaid-16.png.png" id="7_2juyi"]
+[ext_resource type="Texture2D" uid="uid://dv0qpopde5jdo" path="res://assets/sprites/bardmaid/bardmaid-17.png.png" id="7_464e3"]
+[ext_resource type="Texture2D" uid="uid://b8kly458tnyre" path="res://assets/sprites/convinigirl/convinigirl-17.png.png" id="7_tt7va"]
+[ext_resource type="Texture2D" uid="uid://byx4ql2t22jit" path="res://assets/sprites/nursegirl/nursegirl-17.png.png" id="8_1ssjr"]
+[ext_resource type="Texture2D" uid="uid://cqbt2gwxudow8" path="res://assets/sprites/convinigirl/convinigirl-15_1.png" id="9_uhpcg"]
+[ext_resource type="Texture2D" uid="uid://bfon3uyibfcqr" path="res://assets/sprites/nursegirl/nursegirl-15_1.png" id="10_qi856"]
+[ext_resource type="Texture2D" uid="uid://bhqls2waooy5t" path="res://assets/sprites/bardmaid/bardmaid-15_1.png" id="11_lp0jh"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_cajek"]
+bg_color = Color(0.8784314, 0.5568628, 1, 0.2784314)
+corner_radius_top_left = 100
+corner_radius_top_right = 100
+corner_radius_bottom_right = 100
+corner_radius_bottom_left = 100
+
+[node name="ControlesMobiles" type="CanvasLayer"]
+script = ExtResource("1_4od5p")
+
+[node name="Panel" type="Panel" parent="."]
+offset_left = 384.0
+offset_top = 640.0
+offset_right = 576.0
+offset_bottom = 831.0
+theme_override_styles/panel = SubResource("StyleBoxFlat_cajek")
+script = ExtResource("6_464e3")
+textura = Array[CompressedTexture2D]([ExtResource("1_m3af0"), ExtResource("4_uhpcg"), ExtResource("5_qi856"), ExtResource("6_lp0jh")])
+
+[node name="TouchScreenButton" type="TouchScreenButton" parent="Panel"]
+position = Vector2(16, 16)
+scale = Vector2(0.25000006, 0.25000006)
+texture_normal = ExtResource("1_m3af0")
+passby_press = true
+action = "ui_right"
+
+[node name="Panel3" type="Panel" parent="."]
+offset_left = 1280.0
+offset_top = 640.0
+offset_right = 1472.0
+offset_bottom = 831.0
+theme_override_styles/panel = SubResource("StyleBoxFlat_cajek")
+script = ExtResource("6_464e3")
+textura = Array[CompressedTexture2D]([ExtResource("2_7iccm"), ExtResource("5_gqiiq"), ExtResource("6_8snp7"), ExtResource("7_2juyi")])
+
+[node name="TouchScreenButton" type="TouchScreenButton" parent="Panel3"]
+position = Vector2(16, 16)
+scale = Vector2(0.25000006, 0.25000006)
+texture_normal = ExtResource("2_7iccm")
+action = "ui_accept"
+
+[node name="Panel2" type="Panel" parent="."]
+offset_left = 128.0
+offset_top = 640.0
+offset_right = 320.0
+offset_bottom = 831.0
+theme_override_styles/panel = SubResource("StyleBoxFlat_cajek")
+script = ExtResource("6_464e3")
+textura = Array[CompressedTexture2D]([ExtResource("3_w0g76"), ExtResource("9_uhpcg"), ExtResource("10_qi856"), ExtResource("11_lp0jh")])
+
+[node name="TouchScreenButton" type="TouchScreenButton" parent="Panel2"]
+position = Vector2(16.000002, 16.000023)
+scale = Vector2(0.24999999, 0.25000003)
+texture_normal = ExtResource("3_w0g76")
+passby_press = true
+action = "ui_left"
+
+[node name="Panel4" type="Panel" parent="."]
+offset_left = 1408.0
+offset_top = 64.0
+offset_right = 1536.0
+offset_bottom = 192.0
+theme_override_styles/panel = SubResource("StyleBoxFlat_cajek")
+script = ExtResource("6_464e3")
+textura = Array[CompressedTexture2D]([ExtResource("4_y7ah1"), ExtResource("7_tt7va"), ExtResource("8_1ssjr"), ExtResource("7_464e3")])
+
+[node name="TouchScreenButton" type="TouchScreenButton" parent="Panel4"]
+position = Vector2(16, 16)
+scale = Vector2(0.15000015, 0.15)
+texture_normal = ExtResource("4_y7ah1")
+action = "Pausa"

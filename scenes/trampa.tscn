@@ -1,0 +1,45 @@
+[gd_scene load_steps=5 format=3 uid="uid://11vj111jv5d3"]
+
+[ext_resource type="Script" uid="uid://cxfj4c3671yja" path="res://scenes/trampa.gd" id="1_cn4mi"]
+[ext_resource type="Texture2D" uid="uid://bi3qtrcc57og6" path="res://brackeys_platformer_assets/brackeys_platformer_assets/sprites/world_tileset.png" id="1_kxqy2"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_cn4mi"]
+atlas = ExtResource("1_kxqy2")
+region = Rect2(128, 32, 16, 16)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_mdvow"]
+size = Vector2(15, 14)
+
+[node name="Trampa" type="RigidBody2D" node_paths=PackedStringArray("raycasts")]
+lock_rotation = true
+freeze = true
+script = ExtResource("1_cn4mi")
+raycasts = [NodePath("RayCast2D"), NodePath("RayCast2D3"), NodePath("RayCast2D2")]
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+scale = Vector2(0.9375, 1)
+texture = SubResource("AtlasTexture_cn4mi")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("RectangleShape2D_mdvow")
+
+[node name="RayCast2D" type="RayCast2D" parent="."]
+position = Vector2(1.9073486e-06, -9.536743e-07)
+rotation = 3.1415927
+target_position = Vector2(0, 250)
+collision_mask = 4
+collide_with_areas = true
+
+[node name="RayCast2D3" type="RayCast2D" parent="."]
+position = Vector2(5, -4)
+rotation = -1.2915438
+target_position = Vector2(13.874588, 1.2230248)
+collision_mask = 4
+collide_with_areas = true
+
+[node name="RayCast2D2" type="RayCast2D" parent="."]
+position = Vector2(-4, -4)
+rotation = 2.4958208
+target_position = Vector2(-3.830419, 13.391336)
+collision_mask = 4
+collide_with_areas = true

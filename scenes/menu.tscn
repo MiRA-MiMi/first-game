@@ -1,0 +1,154 @@
+[gd_scene load_steps=21 format=3 uid="uid://1cj3fdmcym7k"]
+
+[ext_resource type="Script" uid="uid://decnkq4xd6k2y" path="res://scenes/menu_principal.gd" id="1_g6gyw"]
+[ext_resource type="PackedScene" uid="uid://dx0jwbsnihvqe" path="res://scenes/controlador_partida.tscn" id="1_mxgkd"]
+[ext_resource type="Texture2D" uid="uid://cx5ll6bb46nqi" path="res://assets/sprites/Nepfi animated/Layer 1_sprite_06.png" id="2_g6gyw"]
+[ext_resource type="Texture2D" uid="uid://daeob14vqsr6m" path="res://assets/sprites/Nepfi animated/Layer 1_sprite_07.png" id="3_3dmrc"]
+[ext_resource type="Texture2D" uid="uid://cjkw84d33e6dl" path="res://assets/sprites/Nepfi animated/Layer 1_sprite_08.png" id="4_81l6r"]
+[ext_resource type="Texture2D" uid="uid://bija48efffl5r" path="res://assets/sprites/Nepfi animated/Layer 1_sprite_09.png" id="5_rsfmq"]
+[ext_resource type="Theme" uid="uid://dclpb6p76r266" path="res://Themes/boton_menu_principal.tres" id="6_oi1it"]
+[ext_resource type="StyleBox" uid="uid://dwfpgua5qhs3c" path="res://ButtonStyles/botonNormal.tres" id="7_fy8yy"]
+[ext_resource type="StyleBox" uid="uid://cyrmja0eaxyqe" path="res://ButtonStyles/botonPress.tres" id="8_6wigr"]
+[ext_resource type="StyleBox" uid="uid://b15cxl6oa7yh3" path="res://ButtonStyles/botonHover.tres" id="9_lnf0i"]
+[ext_resource type="StyleBox" uid="uid://dwxeyp3gpd41c" path="res://ButtonStyles/botonFocus.tres" id="10_ffqrc"]
+[ext_resource type="Script" uid="uid://83mmxm1av54v" path="res://scenes/boton_jugar.gd" id="11_x16fv"]
+[ext_resource type="PackedScene" uid="uid://c306tsyqd5ems" path="res://scenes/principal.tscn" id="12_g54pe"]
+[ext_resource type="Script" uid="uid://cttnltxwbnt54" path="res://scenes/cargar.gd" id="13_48ryc"]
+[ext_resource type="Script" uid="uid://c2q8b4jtvdudk" path="res://scenes/botonsalir.gd" id="14_vhsb5"]
+[ext_resource type="PackedScene" uid="uid://dk5q8y6xyy08" path="res://scenes/cargar_nivel.tscn" id="15_3dmrc"]
+[ext_resource type="Script" uid="uid://b2en6pjl7h0h" path="res://scenes/borrar_juego.gd" id="15_hwfsl"]
+[ext_resource type="PackedScene" uid="uid://c6r8lu4l7a3gv" path="res://scenes/contador_monedas_totales.tscn" id="16_a04p5"]
+
+[sub_resource type="AnimatedTexture" id="AnimatedTexture_b5gwo"]
+frames = 4
+speed_scale = 9.0
+frame_0/texture = ExtResource("2_g6gyw")
+frame_1/texture = ExtResource("3_3dmrc")
+frame_1/duration = 1.0
+frame_2/texture = ExtResource("4_81l6r")
+frame_2/duration = 1.0
+frame_3/texture = ExtResource("5_rsfmq")
+frame_3/duration = 1.0
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_0ndyk"]
+particle_flag_disable_z = true
+emission_shape = 3
+emission_box_extents = Vector3(1, 500, 1)
+angle_min = -403.9
+angle_max = 158.00002
+spread = 0.0
+initial_velocity_min = 50.0
+initial_velocity_max = 100.0
+gravity = Vector3(0, 0, 0)
+
+[node name="Menu" type="Control" node_paths=PackedStringArray("controlador_partida", "contadorMonedasTotales")]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_g6gyw")
+controlador_partida = NodePath("ControladorPartida")
+contadorMonedasTotales = NodePath("ContadorMonedasTotales")
+
+[node name="ControladorPartida" parent="." instance=ExtResource("1_mxgkd")]
+
+[node name="ColorRect" type="ColorRect" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_bottom = 24.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.30980393, 1, 1, 0.6509804)
+
+[node name="Control" type="Control" parent="."]
+layout_mode = 1
+anchors_preset = 4
+anchor_top = 0.5
+anchor_bottom = 0.5
+offset_left = -376.0
+offset_top = -28.0
+offset_right = -336.0
+offset_bottom = 12.0
+grow_vertical = 2
+
+[node name="GPUParticles2D" type="GPUParticles2D" parent="Control"]
+position = Vector2(0, 103)
+amount = 45
+texture = SubResource("AnimatedTexture_b5gwo")
+lifetime = 35.0
+preprocess = 30.0
+visibility_rect = Rect2(-1000, -1000, 2000, 2000)
+process_material = SubResource("ParticleProcessMaterial_0ndyk")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="."]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -130.5
+offset_top = -250.0
+offset_right = 130.5
+offset_bottom = 250.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/separation = 20
+
+[node name="Jugar" type="Button" parent="VBoxContainer"]
+layout_mode = 2
+theme = ExtResource("6_oi1it")
+theme_override_styles/normal = ExtResource("7_fy8yy")
+theme_override_styles/pressed = ExtResource("8_6wigr")
+theme_override_styles/hover = ExtResource("9_lnf0i")
+theme_override_styles/focus = ExtResource("10_ffqrc")
+text = "Jugar"
+script = ExtResource("11_x16fv")
+escenaPrincipal = ExtResource("12_g54pe")
+
+[node name="Cargar" type="Button" parent="VBoxContainer"]
+layout_mode = 2
+theme = ExtResource("6_oi1it")
+text = "Cargar"
+script = ExtResource("13_48ryc")
+menuCargar = ExtResource("15_3dmrc")
+
+[node name="Tienda" type="Button" parent="VBoxContainer"]
+layout_mode = 2
+theme = ExtResource("6_oi1it")
+text = "Tienda"
+
+[node name="Salir" type="Button" parent="VBoxContainer"]
+layout_mode = 2
+theme = ExtResource("6_oi1it")
+text = "Salir"
+script = ExtResource("14_vhsb5")
+
+[node name="BorrarJuego" type="Button" parent="."]
+layout_mode = 1
+anchors_preset = 3
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -167.0
+offset_top = -69.0
+grow_horizontal = 0
+grow_vertical = 0
+theme = ExtResource("6_oi1it")
+theme_override_font_sizes/font_size = 30
+theme_override_styles/normal = ExtResource("7_fy8yy")
+theme_override_styles/pressed = ExtResource("8_6wigr")
+theme_override_styles/hover = ExtResource("9_lnf0i")
+theme_override_styles/focus = ExtResource("10_ffqrc")
+text = "Borrar datos"
+script = ExtResource("15_hwfsl")
+
+[node name="ContadorMonedasTotales" parent="." instance=ExtResource("16_a04p5")]
+layout_mode = 0
+offset_right = 240.0
+offset_bottom = 56.0

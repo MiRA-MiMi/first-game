@@ -1,0 +1,245 @@
+[gd_scene load_steps=33 format=3 uid="uid://rmy53cyxsawb"]
+
+[ext_resource type="PackedScene" uid="uid://dx0jwbsnihvqe" path="res://scenes/controlador_partida.tscn" id="1_mcj26"]
+[ext_resource type="Texture2D" uid="uid://cx5ll6bb46nqi" path="res://assets/sprites/Nepfi animated/Layer 1_sprite_06.png" id="2_2kswj"]
+[ext_resource type="Texture2D" uid="uid://daeob14vqsr6m" path="res://assets/sprites/Nepfi animated/Layer 1_sprite_07.png" id="3_id20v"]
+[ext_resource type="Texture2D" uid="uid://cjkw84d33e6dl" path="res://assets/sprites/Nepfi animated/Layer 1_sprite_08.png" id="4_jxyx4"]
+[ext_resource type="Texture2D" uid="uid://bija48efffl5r" path="res://assets/sprites/Nepfi animated/Layer 1_sprite_09.png" id="5_dubyl"]
+[ext_resource type="Theme" uid="uid://dclpb6p76r266" path="res://Themes/boton_menu_principal.tres" id="6_y15xd"]
+[ext_resource type="Script" uid="uid://bb7rx1x7b4ktp" path="res://scenes/volver_menu.gd" id="7_vh2rl"]
+[ext_resource type="PackedScene" uid="uid://c6r8lu4l7a3gv" path="res://scenes/contador_monedas_totales.tscn" id="8_tr5yo"]
+[ext_resource type="Texture2D" uid="uid://bedeqxefnmp3c" path="res://assets/sprites/Nepfi animated/Layer 1_sprite_01.png" id="10_sfxs6"]
+[ext_resource type="Texture2D" uid="uid://bcxpbru717rvb" path="res://assets/sprites/Nepfi animated/Layer 1_sprite_11.png" id="11_jxyx4"]
+[ext_resource type="Texture2D" uid="uid://bqdt68loe5g2i" path="res://assets/sprites/Nepfi animated/Layer 1_sprite_04.png" id="12_dubyl"]
+[ext_resource type="Texture2D" uid="uid://bduvu6x2h2n3y" path="res://assets/sprites/bardmaid/sprite_00.png" id="13_33a00"]
+[ext_resource type="Script" uid="uid://t58lakvh42im" path="res://scenes/unlock_convini_button.gd" id="13_bftsm"]
+[ext_resource type="Script" uid="uid://lo1wqs3tcxl6" path="res://scripts/barmaid_button.gd" id="13_vh2rl"]
+[ext_resource type="Texture2D" uid="uid://c01ltdc6q4lsy" path="res://assets/sprites/convinigirl/sprite_00.png" id="14_bhyba"]
+[ext_resource type="Texture2D" uid="uid://dq0v3xlnwfrho" path="res://assets/sprites/bardmaid/sprite_10.png" id="14_cb0qv"]
+[ext_resource type="Script" uid="uid://bg0glso1lvwrg" path="res://scripts/shop_Nepfi.gd" id="14_dubyl"]
+[ext_resource type="Script" uid="uid://dvrb3lur0j0r7" path="res://scripts/unlock_nurse_button.gd" id="14_jxyx4"]
+[ext_resource type="Texture2D" uid="uid://bc7hbwj2qh40o" path="res://assets/sprites/bardmaid/sprite_03.png" id="15_cb0qv"]
+[ext_resource type="Texture2D" uid="uid://djgh10m0hwsc6" path="res://assets/sprites/convinigirl/sprite_10.png" id="15_gmw26"]
+[ext_resource type="Script" uid="uid://jgrdegaysppw" path="res://scripts/unlock_barmaid_button.gd" id="15_y15xd"]
+[ext_resource type="Texture2D" uid="uid://cvsldgvovvmuh" path="res://assets/sprites/convinigirl/sprite_01.png" id="16_bftsm"]
+[ext_resource type="Texture2D" uid="uid://cvvc6gdwxx8q1" path="res://assets/sprites/bardmaid/sprite_16.png" id="17_ausht"]
+[ext_resource type="Texture2D" uid="uid://c3pkc4k546nqf" path="res://assets/sprites/convinigirl/sprite_16.png" id="17_gmw26"]
+[ext_resource type="Script" uid="uid://c70357sq40db4" path="res://scenes/shop_convini_girl.gd" id="18_bftsm"]
+[ext_resource type="Texture2D" uid="uid://dyhl6pxgju38w" path="res://assets/sprites/nursegirl/sprite_00.png" id="19_id20v"]
+[ext_resource type="Texture2D" uid="uid://bcjbpe6bj0t7n" path="res://assets/sprites/nursegirl/sprite_10.png" id="20_jxyx4"]
+[ext_resource type="Texture2D" uid="uid://cfwc7g3jpi3dr" path="res://assets/sprites/nursegirl/sprite_01.png" id="21_dubyl"]
+[ext_resource type="Script" uid="uid://dbv0dmuhn8ykj" path="res://scripts/cute_nurse_button.gd" id="22_y15xd"]
+[ext_resource type="Texture2D" uid="uid://b46avw1ro5rpp" path="res://assets/sprites/nursegirl/sprite_16.png" id="24_dubyl"]
+
+[sub_resource type="AnimatedTexture" id="AnimatedTexture_1kwyl"]
+frames = 4
+speed_scale = 9.0
+frame_0/texture = ExtResource("2_2kswj")
+frame_1/texture = ExtResource("3_id20v")
+frame_1/duration = 1.0
+frame_2/texture = ExtResource("4_jxyx4")
+frame_2/duration = 1.0
+frame_3/texture = ExtResource("5_dubyl")
+frame_3/duration = 1.0
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_3cv5i"]
+particle_flag_disable_z = true
+emission_shape = 3
+emission_box_extents = Vector3(1, 500, 1)
+angle_min = -403.9
+angle_max = 158.00002
+spread = 0.0
+initial_velocity_min = 50.0
+initial_velocity_max = 100.0
+gravity = Vector3(0, 0, 0)
+
+[node name="Tienda" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="ControladorPartida" parent="." instance=ExtResource("1_mcj26")]
+
+[node name="ColorRect" type="ColorRect" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_bottom = 24.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.30980393, 1, 1, 0.6509804)
+
+[node name="Control" type="Control" parent="."]
+layout_mode = 1
+anchors_preset = 4
+anchor_top = 0.5
+anchor_bottom = 0.5
+offset_left = -376.0
+offset_top = -28.0
+offset_right = -336.0
+offset_bottom = 12.0
+grow_vertical = 2
+
+[node name="GPUParticles2D" type="GPUParticles2D" parent="Control"]
+position = Vector2(0, 103)
+amount = 45
+texture = SubResource("AnimatedTexture_1kwyl")
+lifetime = 35.0
+preprocess = 30.0
+visibility_rect = Rect2(-1000, -1000, 2000, 2000)
+process_material = SubResource("ParticleProcessMaterial_3cv5i")
+
+[node name="ColorRect2" type="ColorRect" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 365.0
+offset_top = 30.0
+offset_right = -363.0
+offset_bottom = -166.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.90666807, 0.86172146, 1, 0.6509804)
+
+[node name="Volver al menu" type="Button" parent="." node_paths=PackedStringArray("controladorPartida")]
+layout_mode = 0
+offset_left = 176.0
+offset_top = 750.0
+offset_right = 1424.0
+offset_bottom = 860.0
+theme = ExtResource("6_y15xd")
+text = "Volver al menu"
+script = ExtResource("7_vh2rl")
+controladorPartida = NodePath("../ControladorPartida")
+
+[node name="ContadorMonedasTotales" parent="." instance=ExtResource("8_tr5yo")]
+layout_mode = 0
+offset_right = 352.0
+offset_bottom = 56.0
+
+[node name="BoxContainer2" type="BoxContainer" parent="."]
+layout_mode = 0
+offset_left = 365.0
+offset_top = 30.0
+offset_right = 717.0
+offset_bottom = 734.0
+theme_override_constants/separation = 0
+alignment = 1
+vertical = true
+
+[node name="NepfiButton" type="TextureButton" parent="BoxContainer2"]
+layout_mode = 2
+toggle_mode = true
+texture_normal = ExtResource("10_sfxs6")
+texture_pressed = ExtResource("11_jxyx4")
+texture_hover = ExtResource("12_dubyl")
+texture_disabled = ExtResource("11_jxyx4")
+stretch_mode = 3
+script = ExtResource("14_dubyl")
+
+[node name="BarmaidButton" type="TextureButton" parent="BoxContainer2"]
+layout_mode = 2
+toggle_mode = true
+texture_normal = ExtResource("13_33a00")
+texture_pressed = ExtResource("14_cb0qv")
+texture_hover = ExtResource("15_cb0qv")
+texture_disabled = ExtResource("14_cb0qv")
+stretch_mode = 3
+script = ExtResource("13_vh2rl")
+texturaBloqueado = ExtResource("17_ausht")
+
+[node name="BoxContainer3" type="BoxContainer" parent="."]
+layout_mode = 0
+offset_left = 1243.0
+offset_top = 180.0
+offset_right = 1595.0
+offset_bottom = 624.0
+theme_override_constants/separation = 275
+alignment = 1
+vertical = true
+
+[node name="UnlockConviniButton" type="Button" parent="BoxContainer3" node_paths=PackedStringArray("conviniButton")]
+layout_mode = 2
+theme_override_colors/font_hover_color = Color(0.9490196, 0.9490196, 0.5686275, 1)
+theme_override_colors/font_hover_pressed_color = Color(0.9490196, 0.9490196, 0.5686275, 1)
+theme_override_font_sizes/font_size = 23
+text = "Desbloquear Por 10 Monedas
+Convini Girl"
+script = ExtResource("13_bftsm")
+conviniButton = NodePath("../../BoxContainer/ConviniGirlButton")
+
+[node name="UnlockNurseButton" type="Button" parent="BoxContainer3" node_paths=PackedStringArray("nurseButton")]
+layout_mode = 2
+theme_override_colors/font_hover_color = Color(0.9490196, 0.9490196, 0.5686275, 1)
+theme_override_colors/font_hover_pressed_color = Color(0.9490196, 0.9490196, 0.5686275, 1)
+theme_override_font_sizes/font_size = 23
+text = "Desbloquear Por 100 Monedas
+Cute Nurse"
+script = ExtResource("14_jxyx4")
+nurseButton = NodePath("../../BoxContainer/CuteNurseButton")
+
+[node name="BoxContainer4" type="BoxContainer" parent="."]
+layout_mode = 0
+offset_left = 8.0
+offset_top = 180.0
+offset_right = 360.0
+offset_bottom = 599.0
+theme_override_constants/separation = 275
+alignment = 1
+vertical = true
+
+[node name="Button" type="Button" parent="BoxContainer4"]
+modulate = Color(1, 1, 1, 0)
+layout_mode = 2
+theme_override_colors/font_hover_color = Color(0.9372549, 0.9647059, 0.53333336, 1)
+theme_override_colors/font_disabled_color = Color(0.8039216, 0.101960786, 0, 0.8352941)
+theme_override_font_sizes/font_size = 23
+text = "Desbloquear Por 100 Monedas
+Convini Girl"
+
+[node name="UnlockBarmaidButton" type="Button" parent="BoxContainer4" node_paths=PackedStringArray("barmaidButton")]
+layout_mode = 2
+theme_override_colors/font_hover_color = Color(0.9490196, 0.9490196, 0.5686275, 1)
+theme_override_colors/font_hover_pressed_color = Color(0.9490196, 0.9490196, 0.5686275, 1)
+theme_override_font_sizes/font_size = 23
+text = "Desbloquear Por 100 Monedas
+Bardmaid"
+script = ExtResource("15_y15xd")
+barmaidButton = NodePath("../../BoxContainer2/BarmaidButton")
+
+[node name="BoxContainer" type="BoxContainer" parent="."]
+layout_mode = 0
+offset_left = 885.0
+offset_top = 30.0
+offset_right = 1237.0
+offset_bottom = 734.0
+theme_override_constants/separation = 0
+alignment = 1
+vertical = true
+
+[node name="ConviniGirlButton" type="TextureButton" parent="BoxContainer"]
+layout_mode = 2
+toggle_mode = true
+texture_normal = ExtResource("14_bhyba")
+texture_pressed = ExtResource("15_gmw26")
+texture_hover = ExtResource("16_bftsm")
+texture_disabled = ExtResource("15_gmw26")
+stretch_mode = 3
+script = ExtResource("18_bftsm")
+texturaBloqueado = ExtResource("17_gmw26")
+
+[node name="CuteNurseButton" type="TextureButton" parent="BoxContainer"]
+layout_mode = 2
+toggle_mode = true
+texture_normal = ExtResource("19_id20v")
+texture_pressed = ExtResource("20_jxyx4")
+texture_hover = ExtResource("21_dubyl")
+texture_disabled = ExtResource("20_jxyx4")
+stretch_mode = 3
+script = ExtResource("22_y15xd")
+texturaBloqueado = ExtResource("24_dubyl")

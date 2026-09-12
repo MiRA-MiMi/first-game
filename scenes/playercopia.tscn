@@ -1,0 +1,71 @@
+[gd_scene load_steps=15 format=3 uid="uid://cbrqlsvlccs4i"]
+
+[ext_resource type="Script" uid="uid://pkqxqw05nnkx" path="res://scripts/player.gd" id="1_m1sr7"]
+[ext_resource type="Material" uid="uid://1p7y0kka6bly" path="res://assets/sprites/material_personaje_azul.tres" id="2_aoy1g"]
+[ext_resource type="Shader" uid="uid://blkp0sy6762pu" path="res://assets/sprites/shaders/shader_rojo.tres" id="3_n8hwb"]
+[ext_resource type="Shader" uid="uid://c1ft4qs4cv5dr" path="res://assets/sprites/shaders/shader_verde.tres" id="4_nmkvk"]
+[ext_resource type="SpriteFrames" uid="uid://bkq7b7ma3d8uu" path="res://resources/nepfi_frames.tres" id="5_v78bo"]
+[ext_resource type="AudioStream" uid="uid://cw0ic0svcied0" path="res://assets/sounds/freesound_crunchpixstudio-material-coin-394492.mp3" id="6_hwgq1"]
+[ext_resource type="Script" uid="uid://1xsjssrsbnch" path="res://scenes/reproductor.gd" id="7_ssp2n"]
+[ext_resource type="AudioStream" uid="uid://dk53qskdcybop" path="res://assets/sounds/freesound_community-splash-01-35899.mp3" id="8_xoc5b"]
+[ext_resource type="AudioStream" uid="uid://cnqju7vmdquqo" path="res://assets/sounds/floraphonic-classic-game-action-positive-29-224564.mp3" id="9_3i1tt"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_qlg0r"]
+shader = ExtResource("3_n8hwb")
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_tuyoq"]
+shader = ExtResource("4_nmkvk")
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_fjrip"]
+radius = 4.0
+height = 14.0
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_g2els"]
+size = Vector2(8, 14)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_ur7pv"]
+
+[node name="Player" type="CharacterBody2D" node_paths=PackedStringArray("area2D", "reproductor")]
+collision_layer = 4
+script = ExtResource("1_m1sr7")
+area2D = NodePath("Area2D")
+materialPersonajeAzul = ExtResource("2_aoy1g")
+materialPersonajeRojo = SubResource("ShaderMaterial_qlg0r")
+materialPersonajeVerde = SubResource("ShaderMaterial_tuyoq")
+reproductor = [NodePath("AudioStreamPlayerAplastado"), NodePath("AudioStreamPlayerAhogarse"), NodePath("AudioStreamPlayerGanar")]
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+position = Vector2(0, -10)
+sprite_frames = ExtResource("5_v78bo")
+animation = &"start running"
+autoplay = "keep running"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(0, -7)
+shape = SubResource("CapsuleShape2D_fjrip")
+
+[node name="Area2D" type="Area2D" parent="."]
+collision_layer = 0
+collision_mask = 2
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+position = Vector2(0, -7)
+shape = SubResource("RectangleShape2D_g2els")
+
+[node name="AudioStreamPlayerAplastado" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("6_hwgq1")
+script = ExtResource("7_ssp2n")
+
+[node name="AudioStreamPlayerAhogarse" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("8_xoc5b")
+script = ExtResource("7_ssp2n")
+
+[node name="AudioStreamPlayerGanar" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("9_3i1tt")
+script = ExtResource("7_ssp2n")
+
+[node name="AnimatedSprite2D2" type="AnimatedSprite2D" parent="."]
+visible = false
+sprite_frames = SubResource("SpriteFrames_ur7pv")
+
+[connection signal="animation_finished" from="AnimatedSprite2D" to="." method="_on_animated_sprite_2d_animation_finished"]

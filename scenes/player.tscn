@@ -1,0 +1,79 @@
+[gd_scene load_steps=18 format=3 uid="uid://8p1yvuc4go0h"]
+
+[ext_resource type="Script" uid="uid://pkqxqw05nnkx" path="res://scripts/player.gd" id="1_qhqgy"]
+[ext_resource type="Material" uid="uid://1p7y0kka6bly" path="res://assets/sprites/material_personaje_azul.tres" id="2_dqkch"]
+[ext_resource type="Shader" uid="uid://blkp0sy6762pu" path="res://assets/sprites/shaders/shader_rojo.tres" id="3_dqkch"]
+[ext_resource type="Shader" uid="uid://c1ft4qs4cv5dr" path="res://assets/sprites/shaders/shader_verde.tres" id="4_qlg0r"]
+[ext_resource type="SpriteFrames" uid="uid://c16gggthucqi0" path="res://resources/barmaid_frames.tres" id="5_3v2ag"]
+[ext_resource type="SpriteFrames" uid="uid://ds4v4nd26eyqd" path="res://resources/nurse_frames.tres" id="5_d2wvv"]
+[ext_resource type="SpriteFrames" uid="uid://bkq7b7ma3d8uu" path="res://resources/nepfi_frames.tres" id="5_ur7pv"]
+[ext_resource type="AudioStream" uid="uid://cw0ic0svcied0" path="res://assets/sounds/freesound_crunchpixstudio-material-coin-394492.mp3" id="6_smehm"]
+[ext_resource type="SpriteFrames" uid="uid://dytgf7g4f7aqf" path="res://resources/convinigirl_frames.tres" id="6_y4r1p"]
+[ext_resource type="AudioStream" uid="uid://dk53qskdcybop" path="res://assets/sounds/freesound_community-splash-01-35899.mp3" id="7_smehm"]
+[ext_resource type="Script" uid="uid://1xsjssrsbnch" path="res://scenes/reproductor.gd" id="7_ur7pv"]
+[ext_resource type="AudioStream" uid="uid://cnqju7vmdquqo" path="res://assets/sounds/floraphonic-classic-game-action-positive-29-224564.mp3" id="8_y4r1p"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_qlg0r"]
+shader = ExtResource("3_dqkch")
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_tuyoq"]
+shader = ExtResource("4_qlg0r")
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_fjrip"]
+radius = 4.0
+height = 14.0
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_g2els"]
+size = Vector2(8, 14)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_ur7pv"]
+
+[node name="Player" type="CharacterBody2D" node_paths=PackedStringArray("area2D", "reproductor", "timerBufferSalto")]
+collision_layer = 4
+script = ExtResource("1_qhqgy")
+area2D = NodePath("Area2D")
+materialPersonajeAzul = ExtResource("2_dqkch")
+materialPersonajeRojo = SubResource("ShaderMaterial_qlg0r")
+materialPersonajeVerde = SubResource("ShaderMaterial_tuyoq")
+reproductor = [NodePath("AudioStreamPlayerAplastado"), NodePath("AudioStreamPlayerAhogarse"), NodePath("AudioStreamPlayerGanar")]
+spriteFrames = Array[SpriteFrames]([ExtResource("5_ur7pv"), ExtResource("6_y4r1p"), ExtResource("5_d2wvv"), ExtResource("5_3v2ag")])
+timerBufferSalto = NodePath("TimerBufferSalto")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+position = Vector2(0, -10)
+sprite_frames = ExtResource("5_ur7pv")
+animation = &"start running"
+autoplay = "idle"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(0, -7)
+shape = SubResource("CapsuleShape2D_fjrip")
+
+[node name="Area2D" type="Area2D" parent="."]
+collision_layer = 0
+collision_mask = 2
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+position = Vector2(0, -7)
+shape = SubResource("RectangleShape2D_g2els")
+
+[node name="AudioStreamPlayerAplastado" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("6_smehm")
+script = ExtResource("7_ur7pv")
+
+[node name="AudioStreamPlayerAhogarse" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("7_smehm")
+script = ExtResource("7_ur7pv")
+
+[node name="AudioStreamPlayerGanar" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("8_y4r1p")
+script = ExtResource("7_ur7pv")
+
+[node name="AnimatedSprite2D2" type="AnimatedSprite2D" parent="."]
+visible = false
+sprite_frames = SubResource("SpriteFrames_ur7pv")
+
+[node name="TimerBufferSalto" type="Timer" parent="."]
+one_shot = true
+
+[connection signal="animation_finished" from="AnimatedSprite2D" to="." method="_on_animated_sprite_2d_animation_finished"]
